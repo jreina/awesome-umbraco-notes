@@ -122,3 +122,18 @@ Partial View Macro File or Template
 &nbsp;&nbsp;calls -> `@Html.Action("Index", "ContactForm")`  
 &nbsp;&nbsp;&nbsp;&nbsp;returns -> `~/Views/Partials/ContactForm.cshtml`  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;posts to -> `ContactFormSurfaceController.Submit()`
+
+## Presenting a form submission status
+We can use `TempData` to pass a submission status to the view. We can do something like below:
+```csharp
+// controller
+TempData["submit-success"] = true;
+
+// view
+@if(TempData["submit-success"] == null) {
+    // show form
+}
+else {
+    // show a confirmation message
+}
+```
